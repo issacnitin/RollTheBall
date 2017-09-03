@@ -2,6 +2,7 @@
 
 // Include the namespace required to use Unity UI
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using System.Collections;
 
@@ -45,6 +46,10 @@ public class PlayerController : MonoBehaviour {
 		// Add a physical force to our Player rigidbody using our 'movement' Vector3 above, 
 		// multiplying it by 'speed' - our public player speed that appears in the inspector
 		rb.AddForce (movement * speed);
+
+		if (gameObject.transform.position.y <= 0) {
+			SceneManager.LoadScene(Application.loadedLevel);
+		}
 	}
 
 	// When this game object intersects a collider with 'is trigger' checked, 
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			// Set the text value of our 'winText'
 			winText.text = "You Win!";
+			Application.LoadLevel ("Level2");
 		}
 	}
 }
