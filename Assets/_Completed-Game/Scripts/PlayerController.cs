@@ -81,7 +81,8 @@ public class PlayerController : MonoBehaviour {
 		{
 			// Set the text value of our 'winText'
 			winText.text = "You Win!";
-			Application.LoadLevel ("Level2");
+			if(SceneManager.GetActiveScene().name == "Level1")
+				SceneManager.LoadScene ("Level2");
 		}
 	}
 }
